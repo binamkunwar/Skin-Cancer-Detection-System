@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Blog</title>
+
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blog.js') }}"></script>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/admin.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/blog.css') }}">
+
+<body>
+
+   {% include 'mainAdmin.html' %}
+
+   <form id="blog-form" method="post">
+    <span id="success-message" style="color: rgb(95, 168, 95); display: none"></span>
+    <span id="error-message" style="color: red; display: none"></span>
+
+    <div class="input-container">
+        <label for="heading"><i class="fas fa-user"></i></label>
+        <input type="heading" id="heading" name="heading" placeholder="Title" required />
+    </div>
+
+    <div class="input-container">
+        <label for="blogdetail"><i class="fas fa-envelope"></i></label>
+        <input type="text" id="blogdetail" name="blogdetail" placeholder="Blog" required />
+    </div>
+
+  <div class="input-container">
+    <label for="profession"><i class="fas fa-key"></i></label>
+    <input type="profession" id="profession" name="profession" placeholder="Profession" required />
+</div>
+
+    <!-- Add other fields if needed -->
+
+    <button type="submit">Add <i class="fas fa-user-plus"></i></button>
+    
+    
+</form>
+<div id="blogListContainer">
+  <table>          
+      <tbody id="blogTableBody">  
+                 <h2>Blog List</h2>
+          <thead>
+              <tr>
+                  <th>Title</th>
+                  <th>Blog</th>
+                  <th>Profession</th>
+              </tr>
+          </thead>         
+          {% for blog in blogs %}             
+              <tr>
+                  <td>{{ blog.heading }}</td>
+                  <td>{{ blog.blogdetail }}</td>
+                  <td>{{ blog.profession }}</td>
+                  <!-- <td><button class="delete-blog" data-blog-id="{{ blog.id }}" action="deleteBlog">Delete</button></td> -->
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+</div>
+</body>
+</html>

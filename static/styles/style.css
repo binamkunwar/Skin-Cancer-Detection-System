@@ -1,0 +1,254 @@
+   /*reset*/
+   *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+  
+}
+h1,h2,h3{
+    padding-top: 10px;
+}
+p{
+    margin: 10px 0;
+}
+a{
+  text-decoration:none ;
+}
+
+/*reset close*/
+/*navigation*/
+.container{
+    margin: auto;
+    max-width: 1100px;
+    overflow: auto;
+    padding: 0 20px;
+}
+/* Center align the contents of .container-image */
+.container-image {
+    display: flex; /* Use Flexbox to create a flexible container */
+    flex-direction: column; /* Stack the contents vertically */
+    align-items: center; /* Center align contents horizontally */
+    justify-content: center; /* Center align contents vertically */
+    text-align: center; /* Center align text within the container */
+  }
+  
+#navbar{
+    background-color: #675353;
+    color: aliceblue;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    justify-content: space-between;
+    padding: 1rem;
+    text-align: center;
+}
+
+#navbar a{
+    color: #fff;
+}
+
+#navbar h1{
+    float: left;
+    padding-top: 16px;
+}
+
+#navbar ul{
+    float:right;
+    list-style: none;
+    align-items: center;
+}
+
+#navbar ul li{
+    float: left;
+}
+
+#navbar ul li a{
+    display: block;
+    padding: 20px;
+    text-align: center;
+}
+
+#navbar ul li a:hover,
+#navbar ul li a.current{
+    background-color: #444;
+    color:  #b7a5e3;
+    border-radius: 5px;
+}
+
+#showcase{
+    height: 900px;
+  }
+
+  #showcase .showcase-content{
+      color: #fff;
+      text-align: center;
+      padding-top: 170px;
+  }
+
+  #showcase .showcase-content h1{
+      font-size: 60px;
+      line-height: 1.2em;
+    }
+
+    .text-primary{
+        color: #302424;
+    }
+
+    .lead{
+        font-size: 20px;
+    }
+    #showcase .showcase-content p{
+        line-height: 1.7em;
+        padding-bottom: 20px;
+    }
+
+  .btn{
+      display: inline-block;
+      font-size: 18px;
+      color: #fff;
+      background-color: #333;
+      padding: 13px 20px;;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover{
+        background-color:  #302424;
+        color: #b7a5e3;
+    }
+
+    /*************** HOME SECTION START*************/
+     .btn-light{
+         background: #f4f4f4;
+         color: #333;
+     }
+
+     #home-info{
+         height: 400px;
+     }
+     
+     #home-info .info-img {
+        float: left;
+        width: 50%;
+        background-color: #b44848;
+        /* background: url('scds/static/img/chermiti-mohamed-GrHqA-2GJdU-unsplash.jpg') no-repeat center center/cover; */
+        background-size: cover; /* This will make the image cover the entire element */
+        min-height: 100%;
+    }
+    
+        #home-info .info-content{
+            float: right;
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            padding: 60px 30px;
+        }
+        .bg-dark{
+            background: #4d4b4b;
+            color: #fff;
+        }
+        /***********Home section end ************/
+
+         /***********Feature section start************/
+        .box{
+            width: 33.3%;
+            float: left;
+            padding: 50px;
+            text-align: center;
+        }
+        .box i{
+            margin-bottom: 10px;
+        }
+        .bg-light{
+            background: #a59191;
+            color: #4e4b4b;
+        }
+        .bg-primary{
+            background:  #948c8c;
+            color: #c41717;
+        }
+         /***********Feature Section Close************/
+        
+         /* parttt */
+
+         /***********Footer Section Start************/
+         #main-footer {
+            background-color: rgba(103, 83, 83, 0.8); /* Adjust the alpha value (0.0 to 1.0) for transparency */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between; /* Add space between items */
+            /* border: 1px solid red; */
+        }
+        
+        .footer {
+            list-style: none;
+            display: flex;
+            padding: 0;
+           margin-left: 35%;
+        }
+        
+        .footer li {
+            margin: 10px 30px; 
+            /* border:  1px solid black; */
+            
+            /* Add space between list items */
+        }
+        
+            .clr{
+                clear: both;
+            }
+
+/* doctor fiels */
+#doctors {
+    /* background-color: #444; */
+    display: none;
+    margin-top: 20px; /* Adjust the margin based on your design */
+    text-align: center; /* Center the doctors when there is only one */
+}
+
+#doctors h3 {
+    background-color: #a59191;
+    border-bottom: 2px solid #333; /* Border under the "Recommended Doctors" heading */
+    padding-bottom: 5px; /* Adjust as needed */
+    margin-bottom: 10px;
+}
+
+#doctors-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the doctors */
+}
+
+.doctor-info {
+    width: calc(33.33% - 10px); /* Adjust the width based on your design */
+    margin-bottom: 20px; /* Adjust the margin based on your design */
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 40px;
+    text-align: center;
+    position: relative;
+    background-color: #a36b6b;
+    margin-right: 10px;
+}
+
+.doctor-info img {
+    background-color: #333;
+    max-width: 100%;
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom: 10px;
+}
+
+.doctor-info p {
+    margin: 5px 0;
+}
+
+
+/* doctor fiels */
+            

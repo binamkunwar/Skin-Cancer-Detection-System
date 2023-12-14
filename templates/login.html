@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
+  <link rel="stylesheet" href="static/styles/login.css">
+<script type="text/javascript" src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+    <title>Login Page</title>
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+    <div class="background-container" style="background: url('static/img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg') no-repeat center center/cover;">
+        <div class="login-container">
+            <h2><i class="fas fa-lock"></i> Login</h2>
+            <form class="login-form"action ="/login" method="POST">
+                <div class="input-container">
+                    <label for="email"><i class="fas fa-user"></i></label>
+                    <input type="text" id="email" name="email" placeholder="Username" required autocomplete="off"  onfocus="clearPlaceholder(this)">
+                </div>
+                
+                <div class="input-container">
+                    <label for="password"><i class="fas fa-key"></i></label>
+                    <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off" onfocus="clearPlaceholder(this)">
+                </div>
+                
+                <button type="submit">Login <i class="fas fa-sign-in-alt"></i>
+                    <!-- <a href="login"></a> -->
+                </button>
+            </form>
+
+            <div class="signup-link">
+                <p>Don't have an account? <a href="signup">Sign Up</a></p>
+            </div>
+           
+           <script>
+                window.onload = function () {
+                    clearFormFields();
+                };
+            </script>
+            
+        </div>
+    </div>
+</body>
+</html>

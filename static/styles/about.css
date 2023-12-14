@@ -1,0 +1,106 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+}
+
+h1,h2,h3,p{
+    padding-top: 10px;
+    padding: 10px;
+}
+
+#showcase {
+    background: url('static/img/pexels-fauxels-3184431.jpg') no-repeat center center;
+    background-size: cover;
+    height: 200px;
+}
+
+#showcase .showcase-content{
+    color: #fff;
+    text-align: center;
+    padding-top: 150px;
+    font-size: xx-large;
+}
+.text-primary{
+    color: antiquewhite;
+}
+
+/* second body */
+#second-body{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    
+}
+
+#left-panel {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: #f1f1f1;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+#left-panel .type{
+    text-decoration: none;
+    color: black;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+#right-panel{
+    margin: 20px;
+    /* border: solid black 2px; */
+    width: 70%;
+
+}
+/* second body end */
+.silde-bold{
+    font-weight: bold;
+    
+}
+
+#fetched-blogs {
+    margin-top: 20px;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+#blogList {
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+.blog-item {
+    list-style: none;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 300px; /* Adjust the width as needed */
+    border: 2px solid rebeccapurple;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(219, 203, 182);
+}
+
+.blog-item div {
+    margin-bottom: 10px;
+}
+
+/* Clearfix to ensure proper wrapping after every row of blogs */
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/about.css') }}">
+    <link rel="stylesheet" type="text/css" href="scds/static/styles/about.css">
+</head>
+<body>
+  {% include 'navbar.html' %}
+
+  <!-- first body -->
+  <div id="main-container">
+    <div id="showcase" style="background: url('static/img/pexels-fauxels-3184431.jpg') no-repeat center center/cover;height: 400px;">
+        <div class="container">
+            <div class="showcase-content">
+                <h1> <span class="text-primary">Curious about skin health? </span> <br>Discover the answers you seek right here.</h1>                        
+            </div>
+            </div>    
+  </div>
+  <!-- first body end -->
+
+  <!-- second body -->
+  <div id="second-body">
+    <div id="left-panel">
+<ul>
+  <li><a class="type" href="#skinType">Find your skin type</a></li>
+  <li><a class="type" href="#moles">Spots and Moles</a></li>
+  <li><a class="type" href="#blogs">Blogs</a></li>
+</ul> 
+</div>
+
+
+    <div id ="right-panel">
+<section id="skinType">
+  <h2>Find your skin type</h2>
+  <h3>What skin type do I have?</h3>
+  <p>
+    Your risk of developing skin cancer can be influenced by various factors, including your skin type. SkinVision aids in determining your skin type, offering personalized advice, assessments, and care for effective protection against skin cancer. If a risk or high-risk assessment is identified, SkinVision will guide you through a personalized skin health journey, providing support before and after your doctor visit</p>
+<br>
+<h2>Skin scale</h2>
+<div id="showcase" style="background: url('static/img/Screenshot from 2023-11-30 21-26-57.png') no-repeat center center/cover;height: 250px;">
+  </div>
+</section >
+
+<section id="moles">
+  <h2>Skin Spots & moles</h2>
+  <p>
+    A mole or nevus is a dark spot on the skin formed by groups of melanocytes, cells producing melanin. They result from sun exposure or are present at birth. Fair-skinned individuals tend to have more moles due to lower melanin levels. Adults usually have 10 to 40 moles on average, which can change with age, hormonal shifts, and sun exposure. While most moles are harmless, regular skin checks (monthly, or every three months, especially with a family history of skin cancer) are crucial to monitor any changes.</p>
+    <h3>Safe mole?</h3>
+    <p>
+      Common moles are:<br>
+    # have neat edges<br>
+    # preserve the same shape,size or colour over time
+    </p>
+    <h3>Cancerous mole?
+    </h3>
+    <p>
+    Warning signs that it may be cancerous:<br>
+    # Changes in size(getting larger)<br>
+    # Itchiness, pain or bleeding<br>
+    # Colour changes(getting darker or multiple shades)<br> 
+    </p>
+    <h3>ABCDE checklist</h3>
+    <p>
+
+The ABCDE checklist is a simple tool for identifying potential signs of skin cancer:<br>
+
+<li><span class="silde-bold">A - Asymmetry:</span> Check if one half of the mole or spot does not match the other half.</li>
+<li><span class="silde-bold">B - Border irregularity:</span> Look for uneven or irregular edges.</li>
+<li><span class="silde-bold">C - Color:</span> Pay attention to variations in color, such as different shades of brown, black, or even red.</li>
+<li><span class="silde-bold">D - Diameter:</span> Check for growth or any mole larger than 6 millimeters (about the size of a pencil eraser).</li>
+<li><span class="silde-bold">E - Evolving:</span> for changes over time, including size, shape, or color.</li>    </p>
+</section>
+<section id="blogs">
+  <div id="fetched-blogs">
+    <h2>Blogs</h2>
+    <ul id="blogList"></ul>
+    </div>
+</section>
+  </div>
+  <!-- second body end -->
+</div>
+{% include 'footer.html' %}
+
+<script>
+  $(document).ready(function () {
+      // Fetch blogs from the server
+      $.get('/fetchblogs', function (blogs) {
+          // Display blogs initially
+          displayBlogs(blogs);
+      });
+
+      function displayBlogs(blogs) {
+          var blogList = $("#blogList");
+          blogList.empty(); // Clear existing entries
+
+          blogs.forEach(function (blog) {
+              // Create blog item container
+              var blogItem = $("<li class='blog-item'></li>");
+
+              // Create heading element
+              var heading = $("<div><strong>Title:</strong> " + blog.heading + "</div>");
+
+              // Create blog detail element
+              var blogDetail = $("<div><strong>Desciption:</strong> " + blog.blogdetail + "</div>");
+
+              // Create profession element
+              var profession = $("<div><strong>By:</strong> " + blog.profession + "</div>");
+
+              // Append heading, blog detail, and profession to blog item
+              blogItem.append(heading);
+              blogItem.append(blogDetail);
+              blogItem.append(profession);
+
+              // Append blog item to blogList
+              blogList.append(blogItem);
+          });
+      }
+  });
+</script>
+</body>
+</html>

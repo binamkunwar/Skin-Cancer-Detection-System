@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Skin Cancer Detector</title>
+    <link rel="stylesheet" type="text/css" href="scds/static/styles/style.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/predict.js') }}"></script>
+<body>
+    <!-- navbar -->
+    {% include 'navbar.html' %}
+
+    <center>
+        <!-- body -->
+        <!-- <div id="showcase"> -->
+            <!-- <p><b>User:</b>{{user.name}}</p>
+            <p><b>Email:</b>{{user.email}}</p>
+
+            <a href="/logout">Logout</a> -->
+            <div id="showcase" style="background: url('static/img/carolina-heza-zwPYmB1GlNE-unsplash.jpg') no-repeat center center/cover; min-height: 450px;height: auto;">
+            <div class="container">
+                <div class="showcase-content">
+                    <h1> <span class="text-primary">Your Guide</span> to Skin Wellness.</h1>
+                    <!-- <p class="lead">Your skin, your story. Unveil its beauty and strength with our guide's blend of
+                        self-care, skin health, and cancer awareness.</p> -->
+                    <form id="upload-file" method="post" enctype="multipart/form-data">
+                        
+                       
+                        </div><!-- <label for="imageUpload" class="btn btn-success">Upload</label> -->
+                        <input type="file" name="file" class="btn btn-success" id="imageUpload"
+                            accept=".png, .jpg, .jpeg">
+                    </form>
+                </div>
+                <div class="loader" style="display: none;">
+
+                </div>
+                <h3 id="result">
+                    <span></span>
+                </h3>
+                <div class="image-selection" style="display: none;">
+                    <img id="imagePreview" class="img-responsive" src="#" style="width: 300px;height:200px;" />
+                    <div>
+                        <button type="button" class="btn" id="btn-predict" style="display: block;">Predict</button>    
+                        <!-- <button type="button" class="btn" id="clear-button" style="display: block;">Clear</button>     -->
+
+                    </div>
+            </div>
+             <!-- Add this section to display doctors -->
+             <div id="doctors" style="display: none;">
+                <h3>Recommended Doctors:</h3>
+
+                <div id="doctors-list">
+                    
+                </div>
+            </div>
+            <!-- Doctors section end -->
+
+         
+<!-- bodyend -->
+
+
+    </center>
+    {% include 'footer.html' %}
+
+</body>
+
+</html>

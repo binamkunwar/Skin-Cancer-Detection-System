@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Messages</title>
+
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Adjust as needed */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #4caf50;
+    color: white;
+}
+#message{
+    margin-left: 25%;
+    margin-right: 20px;
+}
+
+   </style>
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/layout.css') }}"> -->
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/admin.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/blog.css') }}">
+
+
+
+<body>
+
+ {% include 'mainAdmin.html' %}
+
+    <!-- <h1>Contact Messages</h1> -->
+    <div id="message">
+        <h1>Messages List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody id="allMessages">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/fetch_contact_data')  // Replace with your Flask endpoint
+                .then(response => response.json())
+                .then(data => {
+                    const messagesContainer = document.getElementById('allMessages');
+                    data.forEach(message => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `<td>${message.name}</td><td>${message.email}</td><td>${message.message}</td>`;
+                        messagesContainer.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching contact data:', error));
+        });
+    </script>
+</body>
+</html>

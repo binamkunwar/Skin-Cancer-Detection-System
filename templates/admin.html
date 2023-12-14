@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/admin.css') }}">
+  <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/blog.css') }}"> -->
+    
+</head>
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+<body>
+
+   {% include 'mainAdmin.html' %}
+
+  <!-- to add docotor -->
+
+    <form id="addDoctorForm" action="add_doctor" method="post" enctype="multipart/form-data">
+            <h2>Doctor</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label>Specialized:</label>
+        <input type="radio" id="cardiologist" name="specialized" value="Cancer Specialist" required>
+        <label for="cardiologist">Cancer Specialist</label>
+
+        <input type="radio" id="dermatologist" name="specialized" value="Dermatologist" required>
+        <label for="dermatologist">Dermatologist</label>
+
+        <label for="introduction">Introduction:</label>
+        <textarea id="introduction" name="introduction" rows="4" required></textarea><br>
+    
+        <label for="photopath">Photo Path:</label>
+        <input type="file" id="photopath" name="photopath" accept="image/*" required><br>
+
+        <label for="phoneNUmber">Phone Number:</label> 
+        <input type="text" id="phoneNUmber" name="phoneNUmber" required><br>
+    
+        <input type="submit" value="Add Doctor">
+    </form>
+
+
+    <!-- Doctor List Container -->
+    <div id="doctorListContainer">
+        <table>          
+            <tbody id="doctorTableBody">  
+                       <h2>Doctor List</h2>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Specialized</th>
+                        <th>Introduction</th>
+                        <th>Phone Number</th>
+                        <!-- <th>SetCalender</th> -->
+                    </tr>
+                </thead>         
+                {% for doctor in doctors %}             
+                    <tr>
+                        <td>{{ doctor.name }}</td>
+                        <td>{{ doctor.specialized }}</td>
+                        <td>{{ doctor.introduction }}</td>
+                        <td>{{ doctor.phoneNUmber }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

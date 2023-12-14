@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Blog</title>
+  <style>
+    #faq-form{
+        margin: 50px;
+        border: solid black 1px;
+    }
+    #faqListContainer{
+        margin-right: 30px;
+    }
+  </style>
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/faq.js') }}"></script>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/admin.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/blog.css') }}">
+
+<body>
+   {% include 'mainAdmin.html' %}
+
+   <form id="faq-form" method="post">
+    <span id="success-message" style="color: rgb(95, 168, 95); display: none"></span>
+    <span id="error-message" style="color: red; display: none"></span>
+
+    <div class="input-container">
+        <label for="question"><i class="fas fa-user"></i></label>
+        <input type="text" id="question" name="question" placeholder="Question" required />
+    </div>
+
+    <div class="input-container">
+        <label for="answer"><i class="fas fa-envelope"></i></label>
+        <input type="text" id="answer" name="answer" placeholder="Answer" required />
+    </div>
+
+    <form id="faq" action="addfaq">
+        <input type="submit" value="Faq">
+    </form>
+    <!-- Add other fields if needed -->
+
+    <!-- <form id="faq" action="allfaqs">
+        <input type="submit" value="Faq">
+    </form>
+     -->
+</form>
+<div id="faqListContainer">
+  <table>          
+      <tbody id="faqTableBody">  
+                 <h2>Faq List</h2>
+          <thead>
+              <tr>
+                  <th>Question</th>
+                  <th>Answer</th>
+              </tr>
+          </thead>         
+          {% for faq in faqs %}             
+              <tr>
+                  <td>{{ faq.question }}</td>
+                  <td>{{ faq.answer }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+</div>
+</body>
+</html>

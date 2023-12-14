@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Skin Cancer Detector</title>
+    <link rel="stylesheet" type="text/css" href="scds/static/styles/style.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<body>
+    <!-- navbar -->
+  
+    {% include 'navbar.html' %}
+
+    <center>
+        <!-- body -->
+            <div id="showcase" style="background: url('static/img/enecta-cannabis-extracts-80wCkpt-IKE-unsplash.jpg') no-repeat center center/cover;height: 700px;">
+            <div class="container">
+                <div class="showcase-content">
+                    <h1> <span class="text-primary">Your Guide</span> to Skin Wellness.</h1>
+                    <p class="lead">Your skin, your story. Unveil its beauty and strength with our guide's blend of
+                        self-care, skin health, and cancer awareness.</p>                   
+                </div>
+                </div>       
+<!-- bodyend -->
+
+<!-- 2nd body -->
+<section id="home-info" class="bg-dark">
+    <!-- <div class="info-img"> -->
+        <div class="info-img" style="background: url('static/img/chermiti-mohamed-GrHqA-2GJdU-unsplash.jpg') no-repeat center center/cover;">
+    </div>
+    <div class="info-content">
+    <h1><span class="text-primary">Skin Speak:</span> Listen, Learn, Glow</h1>
+    <p>"Happy Skin, Happy Life: Exploring Skin Cancer Awareness Made Simple."
+        Embark on a journey of empowerment and well-being as you delve into the world of skin cancer awareness. Through simplified insights, embrace the knowledge that safeguards your skin, fostering happiness and a life lived confidently in the sun's embrace.</p>
+    <a href="about" class="btn btn-light">Read More</a>
+</div>
+</section>
+<!-- end 2nd body -->
+
+
+   <!-- box -->
+   <section id="features">
+    <div class="box bg-light">
+        <i class="fa fa-plus-circle fa-3x"></i>
+        <h3>Advanced Detection</h3>
+        <p>AI-powered system scans and analyzes skin for potential cancerous signs.</p>
+    </div>
+    <div class="box bg-primary">
+        <i class="fa fa-bolt fa-3x"></i>
+        <h3>Early Protection</h3>
+        <p>Identify skin cancer early, ensuring timely intervention and improved outcomes.</p>
+    </div>
+    <div class="box bg-light">
+        <i class="fa fa-snowflake-o fa-3x"></i>
+        <h3>Swift Results</h3>
+        <p>Rapid processing provides quick feedback, reducing anxiety and uncertainty.</p>
+    </div>
+</section>
+
+<!-- box end -->
+
+<!-- footer -->
+<!-- <footer id="main-footer">
+    <ul class="footer">
+     <li>  <a href="faquser" class="btn btn-light">Faq</a></li>        
+     <li><a href="contact" class="btn btn-light">Message</a></li>
+    </ul>
+   </footer> -->
+   <!-- footer end -->
+ 
+    {% include 'footer.html' %}
+
+
+
+    </center>
+
+</body>
+
+</html>

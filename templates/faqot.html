@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #faq {
+            margin: 20px;
+            display: flex;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        .qa-container {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            cursor: pointer;
+            color: #0066cc;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .answer {
+            display: none;
+            margin-left: 30px;
+        }
+
+        .plus-button {
+            margin-left: auto;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        #faq-list {
+            width: 70%;
+            margin: 50px;
+        }
+
+        .question {
+            color: black;
+            padding: 10px;
+        }
+
+        .answer {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+  {% include 'navbar.html' %}
+
+    <div id="faq">
+        <h3>FAQ</h3>
+        <div id="faq-list">
+            <!-- Questions will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Fetch FAQs from the server
+            $.get('/fetchfaqs', function (faqs) {
+                // Display questions initially
+                displayQuestions(faqs);
+            });
+
+            // Handle click events on questions to show answers
+            $("#faq-list").on("click", ".question", function () {
+                // Hide all answers
+                $(".answer").hide();
+
+                // Show the corresponding answer
+                var answer = $(this).next(".answer");
+                answer.show();
+            });
+
+            function displayQuestions(faqs) {
+                var faqList = $("#faq-list");
+                faqList.empty(); // Clear existing entries
+
+                faqs.forEach(function (faq) {
+                    // Create QA container
+                    var qaContainer = $("<div class='qa-container'></div>");
+
+                    // Create question element
+                    var question = $("<div class='question'>Q: " + faq.question + "<div class='plus-button'>+</div></div>");
+
+                    // Create answer element
+                    var answer = $("<div class='answer'>A: " + faq.answer + "</div>");
+
+                    // Append question and answer to QA container
+                    qaContainer.append(question);
+                    qaContainer.append(answer);
+
+                    // Append QA container to faqList
+                    faqList.append(qaContainer);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

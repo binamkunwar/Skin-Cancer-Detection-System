@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="contact.css">
+     -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/contact.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Contact Us</title>
+
+</head>
+<body>
+   
+
+    <div class="background-container">
+     
+        <div class="contact-container">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+            <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+            <p>Have a question or feedback? Reach out to us!</p>
+            <form class="contact-form" method="post" action="" onsubmit="return validateForm()">
+                <div class="input-container">
+                    <label for="name"><i class="fas fa-user"></i></label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="input-container">
+                    <label for="email"><i class="fas fa-envelope"></i></label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="input-container">
+                    <label for="message"><i class="fas fa-pencil-alt"></i></label>
+                    <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Send <i class="fas fa-paper-plane"></i></button>
+                <a href="home" class=" "> Back To Home</a>
+
+            </form>
+            <script>
+                function validateForm() {
+                    var name = document.getElementById("name").value;
+                    var email = document.getElementById("email").value;
+                    var message = document.getElementById("message").value;
+                
+                    if (name.trim() === "") {
+                        alert("Please enter your name");
+                        return false;
+                    }
+                
+                    if (email.trim() === "") {
+                        alert("Please enter your email");
+                        return false;
+                    }
+                
+                    var flashes = document.querySelectorAll('.flashes li');
+        flashes.forEach(function (flash) {
+            flash.style.display = 'none';
+        });
+
+                    // You can add more validation checks for email format and message length if needed
+                
+                    return true;
+                }
+                </script>
+        </div>
+
+    </div>
+</body>
+</html>

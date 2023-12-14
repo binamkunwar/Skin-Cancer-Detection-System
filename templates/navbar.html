@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Skin Cancer Detector</title>
+    <link rel="stylesheet" type="text/css" href="scds/static/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-r1W8TIL2ZlCXzVlqutFLU4Rds3ZdGq3RMcm7YO8XQqBJTM2C+SYU9g1LvR4w6dIz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<body>
+    <!-- navbar -->
+    <header>
+        <nav id="navbar">
+            <div class="container">
+                <h1 class="logo"><a href="home"><i class="fa fa-handshake-o fa-2x"></i></a></h1>
+                <ul>
+                    <li><a class="home" href="home">Home</a></li>
+                    <li><a href="home#home-info">About</a></li>
+                    <li><a href="about">Learn</a></li>
+                    <li><a href="predict">Verify</a></li>
+                    {% if session.logged_in %}
+                
+                        <li class="user-icon">
+                            <a href="logout"> <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                            <div class="user-info-modal" id="userInfo">
+                                <span class="username">{{ session.username }}</span>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li><a href="login"><i class="fa fa-fw fa-user"></i>Login</a></li>
+                    {% endif %}
+                    <!-- <li><a href="mainadmin">MainAdmin</a></li> -->
+                </ul>
+            </div>
+        </nav>
+        <!-- navbar end -->
+    </header>
+
+    <script>
+        $(document).ready(function () {
+        // Show user info modal when hovering over the user icon
+        $('.user-icon').hover(function () {
+            $('#userInfo').fadeToggle(200);
+        });
+    });
+    </script>
+</body>
+
+</html>
